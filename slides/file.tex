@@ -1,0 +1,110 @@
+\begin{frame}
+
+\begin{center}
+
+\Large \textbf{What is a "file"?}
+
+\end{center}
+
+\pause
+
+\begin{flushright}
+
+--- A stream of bytes.
+
+\end{flushright}
+
+Examples:
+
+\begin{itemize}
+
+\item \texttt{main.c}, \texttt{Makefile}, \texttt{kudos-mips32},
+\texttt{report.pdf}, etc.
+
+\begin{itemize}
+
+\item Finite length, random access, can be appended to.
+
+\end{itemize}
+
+\item \texttt{stdin}, \texttt{stdout}, \texttt{stderr}, etc.
+
+\begin{itemize}
+
+\item Infinite length, but no random access.
+
+\end{itemize}
+
+\end{itemize}
+
+\vspace{\fill}
+
+\begin{center}
+
+Hmm\ldots what else is \emph{accessible} as a stream of bytes?
+
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+
+\begin{center}
+
+\Large \textbf{The UNIX/Linux/BSD Approach}
+
+\end{center}
+
+\begin{flushright}
+
+--- Everything is a file!\footnote{Everything is accessible through a uniform
+filesystem interface.}
+
+\end{flushright}
+
+Examples:
+
+\begin{columns}[T]
+
+\begin{column}[T]{.5\textwidth}
+
+\begin{itemize}
+
+\item Directories
+
+\item Binaries
+
+\item Shell or Python scripts
+
+\item PDF documents
+
+\item Spreadsheets
+
+\end{itemize}
+
+\end{column}
+
+\hfill
+
+\begin{column}[T]{.5\textwidth}
+
+\begin{itemize}
+
+\item Kernel data structures
+
+\item Hard drives
+
+\item Partitions
+
+\item Printers
+
+\item Sockets
+
+\end{itemize}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}

@@ -1,0 +1,125 @@
+\begin{frame}
+
+\frametitle{File Descriptors}
+
+\begin{center}
+
+\item What you really use when working on an open file.
+
+\end{center}
+
+\vspace{\fill}
+
+
+\begin{columns}
+
+\column{\dimexpr\paperwidth-50pt}
+
+\begin{flushright}
+
+\begin{quote}
+
+Given  a  pathname  for  a  file, \texttt{open()} returns a file descriptor,
+a small, nonnegative integer for use in subsequent system calls
+(\texttt{read(2)}, \texttt{write(2)}, \texttt{lseek(2)}, \texttt{fcntl(2)},
+etc.).  The file descriptor returned by a successful call will be  the  lowest-
+numbered file descriptor not currently open for the process.
+
+\end{quote}
+
+--- \texttt{open(2), 2015-12-05}
+
+\end{flushright}
+
+\end{columns}
+
+\end{frame}
+
+
+
+%\begin{frame}
+
+%\frametitle{Directories, Hierarchies, and Graphs}
+
+%\end{frame}
+
+
+\begin{frame}
+
+\frametitle{File Types}
+
+\begin{center}
+
+\textbf{If everything is a file, then how do we distinguish file types?}
+
+\end{center}
+
+\begin{itemize}
+
+\item Some operating systems rely on a filename extension.
+
+\item Others rely on file attributes and file structure.
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+
+\begin{center}
+
+\Huge \textbf{DEMO}
+
+\bigskip
+
+\large \texttt{/dev}, \texttt{/proc}, and the \texttt{file} utility.
+
+\end{center}
+
+%\begin{verbatim}
+%$ file /dev/stdin 
+%/dev/stdin: symbolic link to /proc/self/fd/0
+%$ file /proc/self/fd/0
+%/proc/self/fd/0: symbolic link to /dev/pts/4
+%$ file /dev/pts/4
+%/dev/pts/4: character special (136/4)
+%\end{verbatim}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\frametitle{DEMO: Log}
+
+\begin{itemize}
+
+\item \texttt{file} can often be used to determine file type.
+
+\item There's a device with a pathname \texttt{/dev/stdin}.
+
+\begin{verbatim}
+$ file /dev/stdin
+/dev/stdin: symbolic link to /proc/self/fd/0
+\end{verbatim}
+
+\item That is a pathname to your filedescriptor 0.
+
+\begin{verbatim}
+$ file /proc/self/fd/0
+/proc/self/fd/0: symbolic link to /dev/pts/1
+\end{verbatim}
+
+\item That is a character device:
+
+\begin{verbatim}
+$ file /dev/pts/1 
+/dev/pts/1: character special
+\end{verbatim}
+
+\item \texttt{pts} stands for pseudo-terminal slave.
+
+\end{itemize}
+
+\end{frame}

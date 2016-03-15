@@ -1,0 +1,38 @@
+\begin{frame}
+
+\frametitle{Buffered I/O API}
+
+\begin{center}
+
+\bfseries
+
+Cool, so should I use \code{open(2)}, \code{read(2)}, \code{write(2)},
+\code{close(2)}, etc. in my code?
+
+\end{center}
+
+\pause
+
+\begin{flushright}
+
+--- No!
+
+\end{flushright}
+
+\vspace{\fill}
+
+Use (userland) buffered I/O:
+
+\begin{itemize}
+
+\item Include \code{<stdio.h>}.
+
+\item Use \code{fclose(3)}, \code{fread(3)}, \code{fwrite(3)}, \code{fclose(3)}, etc.
+
+\item Perhaps even use \code{fprintf(3)} and \code{fscanf(3)}.
+
+\item Profit from the \textbf{\underline{reduced number of system calls}}.
+
+\end{itemize}
+
+\end{frame}

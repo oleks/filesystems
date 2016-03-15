@@ -1,0 +1,84 @@
+\begin{frame}
+
+\frametitle{I/O API}
+
+\begin{itemize}
+
+\item \texttt{open(2)}
+
+\item \texttt{read(2)}/\texttt{write(2)}
+
+\item \texttt{close(2)}
+
+\end{itemize}
+
+\pause
+
+\vspace{\fill}
+
+Oh and maybe also
+
+\begin{itemize}
+
+\item \texttt{creat(2)}
+
+\item \texttt{unlink(2)}
+
+\item \ldots
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+
+\begin{center}
+
+\Huge \textbf{DEMO}
+
+\bigskip
+
+\large The \texttt{echo}, \texttt{cat}, and \texttt{strace} utilities.
+
+\end{center}
+
+% dd if=/dev/zero of=fatdisk bs=1M count=64
+% mkdosfs -F 32 fatdisk
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\frametitle{DEMO: Log}
+
+\begin{itemize}
+
+\item Put something in a file and print it:
+
+\begin{verbatim}
+$ echo hello > foo
+$ cat foo
+hello
+\end{verbatim}
+
+\item Use \texttt{strace} to trace system calls:
+
+\begin{verbatim}
+$ strace cat foo 
+execve(...
+...
+open("foo", O_RDONLY)
+...
+\end{verbatim}
+
+\item You can limit \texttt{strace} to trace a handful system calls:
+
+\begin{verbatim}
+$ strace -e trace=open,read,write,close cat foo
+\end{verbatim}
+
+\end{itemize}
+
+\end{frame}
