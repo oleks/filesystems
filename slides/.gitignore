@@ -1,1 +1,2 @@
-output/
+output/*
+!output/osm16-filesystems.pdf
